@@ -1,0 +1,23 @@
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+}
+
+.back {
+  position: absolute;
+  left: 16px;
+  display: flex;
+  padding: 4px;
+  border: none;
+  background: none;
+  color: var(--text);
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}

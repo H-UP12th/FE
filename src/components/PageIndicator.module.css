@@ -1,0 +1,20 @@
+.indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gray);
+}
+
+.active {
+  width: 9px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--green);
+}
