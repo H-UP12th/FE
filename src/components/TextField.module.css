@@ -5,19 +5,20 @@
 }
 
 .label {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .input {
   height: 49px;
   padding: 0 14px;
-  border: 1px solid var(--gray);
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: #fff;
+  background: rgb(255 255 255 / 10%);
+  color: var(--text);
 }
 
 .input::placeholder {
-  color: #bdbdbd;
+  color: var(--placeholder);
 }
 
 .input:focus {

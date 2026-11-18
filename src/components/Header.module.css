@@ -6,10 +6,7 @@
 }
 
 .logo {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--green);
-  text-decoration: none;
+  display: flex;
 }
 
 /* 로고가 없어도 프로필은 항상 오른쪽 끝 */

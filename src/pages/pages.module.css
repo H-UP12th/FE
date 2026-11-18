@@ -1,0 +1,141 @@
+/* 공통: 피그마의 상단 50px, 하단 75px 여백 */
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding: 50px 0 75px;
+}
+
+.footer {
+  padding: 0 30px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.error {
+  margin: 0;
+  color: #c83c3c;
+  font-size: 14px;
+}
+
+/* 01 초기 화면 */
+.intro {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 282px 30px 0;
+}
+
+.tagline {
+  margin: 0;
+  padding: 10px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.introActions {
+  display: flex;
+  gap: 9px;
+}
+
+.introLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--green);
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* 02 회원가입 */
+.signupForm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 112px 30px 0;
+}
+
+/* 03 로그인 */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 47px;
+  padding: 199px 30px 0;
+}
+
+/* 04~07 온보딩 슬라이드 */
+.slide {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 36px 30px 0;
+}
+
+.slideText {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: #000;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.slideTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.slideDescription {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.slideFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  padding: 0 30px;
+}
+
+/* 08 온보딩 시작 */
+.onboardingStart {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  padding: 0 30px;
+}
+
+.startText {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* 메인 화면 자리 */
+.mainPlaceholder {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
