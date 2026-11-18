@@ -6,6 +6,10 @@
   padding: 50px 0 75px;
 }
 
+.footer {
+  padding: 0 30px;
+}
+
 .fields {
   display: flex;
   flex-direction: column;
@@ -69,6 +73,63 @@
   flex-direction: column;
   gap: 47px;
   padding: 199px 30px 0;
+}
+
+/* 04~07 온보딩 슬라이드 */
+.slide {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 36px 30px 0;
+}
+
+.slideText {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: #000;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.slideTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.slideDescription {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.slideFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  padding: 0 30px;
+}
+
+/* 08 온보딩 시작 */
+.onboardingStart {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  padding: 0 30px;
+}
+
+.startText {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  white-space: pre-line;
 }
 
 /* 메인 화면 자리 */
