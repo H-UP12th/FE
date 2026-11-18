@@ -53,6 +53,16 @@
   text-decoration: none;
 }
 
+/* 02 회원가입 */
+.signupForm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 112px 30px 0;
+}
+
 /* 03 로그인 */
 .loginForm {
   display: flex;

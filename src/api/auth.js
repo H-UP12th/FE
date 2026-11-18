@@ -21,5 +21,6 @@ async function postAuth(path, body) {
   return result.data
 }
 
+export const signup = (body) => postAuth('signup', body)
 export const login = (body) => postAuth('login', body)
 export const isLoggedIn = () => Boolean(localStorage.getItem('accessToken'))
