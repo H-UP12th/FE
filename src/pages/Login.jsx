@@ -1,0 +1,53 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { login } from '../api/auth'
+import BackHeader from '../components/BackHeader'
+import Button from '../components/Button'
+import TextField from '../components/TextField'
+import styles from './pages.module.css'
+
+// 03 로그인: 닉네임은 API의 loginId로 보내요
+export default function Login() {
+  const navigate = useNavigate()
+  const [error, setError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    setError('')
+    setSubmitting(true)
+    try {
+      await login(Object.fromEntries(new FormData(event.currentTarget)))
+      navigate('/', { replace: true })
+    } catch (err) {
+      setError(err.message)
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <div className={styles.screen}>
+      <BackHeader />
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
+        <div className={styles.fields}>
+          <TextField label="닉네임" name="loginId" placeholder="닉네임" autoComplete="username" />
+          <TextField
+            label="비밀번호"
+            name="password"
+            type="password"
+            placeholder="비밀번호"
+            autoComplete="current-password"
+          />
+          {error && (
+            <p className={styles.error} role="alert">
+              {error}
+            </p>
+          )}
+        </div>
+        <Button type="submit" disabled={submitting}>
+          로그인 하기
+        </Button>
+      </form>
+    </div>
+  )
+}

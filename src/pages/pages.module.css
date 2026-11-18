@@ -6,6 +6,18 @@
   padding: 50px 0 75px;
 }
 
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.error {
+  margin: 0;
+  color: #c83c3c;
+  font-size: 14px;
+}
+
 /* 01 초기 화면 */
 .intro {
   display: flex;
@@ -39,6 +51,14 @@
   color: #fff;
   font-size: 20px;
   text-decoration: none;
+}
+
+/* 03 로그인 */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 47px;
+  padding: 199px 30px 0;
 }
 
 /* 메인 화면 자리 */
