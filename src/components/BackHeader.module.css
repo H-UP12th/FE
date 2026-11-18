@@ -8,7 +8,7 @@
 
 .back {
   position: absolute;
-  left: 16px;
+  left: 12px;
   display: flex;
   padding: 4px;
   border: none;
@@ -19,5 +19,5 @@
 .title {
   margin: 0;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
