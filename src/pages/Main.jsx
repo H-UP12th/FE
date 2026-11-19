@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { isLoggedIn } from '../api/auth'
+import { getPopularMenus } from '../api/menus'
 import logo from '../assets/main/logo.svg'
 import fridge from '../assets/main/fridge.svg'
 import mypageCard from '../assets/main/mypage-card.svg'
@@ -8,9 +9,6 @@ import toBuyNote from '../assets/main/to-buy-note.png'
 import memoNote from '../assets/main/memo-note.png'
 import memoLabel from '../assets/main/memo-label.png'
 import plate from '../assets/main/plate.png'
-import popular1 from '../assets/main/popular-1.png'
-import popular2 from '../assets/main/popular-2.png'
-import popular3 from '../assets/main/popular-3.png'
 import styles from './Main.module.css'
 
 // 냉장고 선반의 카테고리 (값은 API의 category)
@@ -26,14 +24,7 @@ const CATEGORY_ROWS = [
   ],
 ]
 
-// 인기 식단 API가 아직 없어서 피그마 샘플을 임시로 보여줘요
-const POPULAR_MENUS = [
-  { rank: 1, image: popular1 },
-  { rank: 2, image: popular2 },
-  { rank: 3, image: popular3 },
-  { rank: 4 },
-  { rank: 5 },
-]
+const POPULAR_COUNT = 5
 
 // 가운데(0)를 기준으로 한 자리별 위치: 왼쪽 위 좌표, 지름, 투명도
 const SLOTS = {
@@ -45,10 +36,22 @@ const SLOTS = {
 }
 
 function PopularCarousel() {
+  const navigate = useNavigate()
+  const [popular, setPopular] = useState([])
   const [active, setActive] = useState(0)
   const startX = useRef(null)
-  const count = POPULAR_MENUS.length
+  const count = POPULAR_COUNT
   const move = (step) => setActive((i) => (i + step + count) % count)
+
+  useEffect(() => {
+    // 실패하면 빈 자리(회색 원)로 둬요
+    getPopularMenus()
+      .then(setPopular)
+      .catch(() => {})
+  }, [])
+
+  // 메뉴가 5개보다 적으면 남는 자리는 회색 원
+  const menus = Array.from({ length: count }, (_, i) => popular[i] ?? { rank: i + 1 })
 
   return (
     <div
@@ -59,7 +62,7 @@ function PopularCarousel() {
         if (Math.abs(dx) > 30) move(dx < 0 ? 1 : -1)
       }}
     >
-      {POPULAR_MENUS.map((menu, i) => {
+      {menus.map((menu, i) => {
         // -2 ~ 2 사이의 자리 번호
         const offset = ((i - active + count + 2) % count) - 2
         const slot = SLOTS[offset]
@@ -73,10 +76,13 @@ function PopularCarousel() {
               opacity: slot.hidden ? 0 : 1,
             }}
             tabIndex={slot.hidden ? -1 : 0}
-            aria-label={`인기 ${menu.rank}위`}
-            onClick={() => offset !== 0 && move(offset)}
+            aria-label={menu.name ? `인기 ${menu.rank}위 ${menu.name}` : `인기 ${menu.rank}위`}
+            onClick={() => {
+              if (offset !== 0) move(offset)
+              else if (menu.menuId) navigate(`/menus/${menu.menuId}`)
+            }}
           >
-            {menu.image && <img src={menu.image} alt="" />}
+            {menu.imageUrl && <img src={menu.imageUrl} alt="" />}
             <span className={styles.rank}>{menu.rank}</span>
           </button>
         )
