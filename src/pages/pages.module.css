@@ -131,11 +131,3 @@
   text-align: center;
   white-space: pre-line;
 }
-
-/* 메인 화면 자리 */
-.mainPlaceholder {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-}
