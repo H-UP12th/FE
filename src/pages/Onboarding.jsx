@@ -1,4 +1,4 @@
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useNavigationType, useParams } from 'react-router-dom'
 import BackHeader from '../components/BackHeader'
 import Button from '../components/Button'
 import PageIndicator from '../components/PageIndicator'
@@ -37,6 +37,9 @@ export default function Onboarding() {
   const navigate = useNavigate()
   const step = Number(useParams().step)
 
+  // [다음](PUSH)은 오른쪽에서, 뒤로가기(POP)는 왼쪽에서 들어와요
+  const enterClass = useNavigationType() === 'POP' ? styles.enterPrev : styles.enterNext
+
   if (!Number.isInteger(step) || step < 1 || step > SLIDES.length + 1) {
     return <Navigate to="/onboarding/1" replace />
   }
@@ -44,7 +47,7 @@ export default function Onboarding() {
   if (step > SLIDES.length) {
     return (
       <div className={styles.screen}>
-        <main className={styles.onboardingStart}>
+        <main className={`${styles.onboardingStart} ${styles.fadeIn}`}>
           <img src={logo} alt="핼팅" width="119" height="96" />
           <p className={styles.startText}>{'오늘의 건강한 한 끼,\n핼팅에서 찾아볼까요?'}</p>
         </main>
@@ -60,7 +63,8 @@ export default function Onboarding() {
   return (
     <div className={styles.screen}>
       <BackHeader showBack={step > 1} />
-      <main className={styles.slide}>
+      {/* key가 바뀌면 새로 그려지면서 들어오는 애니메이션이 다시 실행돼요 */}
+      <main key={step} className={`${styles.slide} ${enterClass}`}>
         <img src={slide.image} alt="" width="163.8" height="163.8" />
         <div className={styles.slideText}>
           <h1 className={styles.slideTitle}>{slide.title}</h1>
