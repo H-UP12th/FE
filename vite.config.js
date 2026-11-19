@@ -5,9 +5,9 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   server: {
-    // 개발 중 /api 요청을 로컬 백엔드로 전달
+    // 개발 중 /api 요청을 배포된 백엔드로 전달
     proxy: {
-      '/api': 'http://localhost:8080',
+      '/api': { target: 'https://be-btfx.onrender.com', changeOrigin: true },
     },
   },
 })
