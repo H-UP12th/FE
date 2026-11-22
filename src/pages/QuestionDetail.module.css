@@ -1,0 +1,203 @@
+/* 15·16 질문 상세, 17 답변 작성 */
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100svh;
+  padding: 50px 0 81px;
+}
+
+.screen > header {
+  align-self: stretch;
+}
+
+.error {
+  margin: 120px 0 0;
+  color: var(--green-muted);
+  font-size: 14px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 305px;
+  padding-top: 15px;
+}
+
+/* 아래 버튼 영역은 화면 맨 아래로 */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 342px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ownerNote,
+.notice,
+.formError {
+  margin: 0;
+  font-size: 10.8px;
+  text-align: center;
+}
+
+.ownerNote {
+  color: var(--green);
+}
+
+.notice {
+  color: var(--text-sub);
+}
+
+.formError {
+  color: #c83c3c;
+}
+
+/* 답변 목록 */
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.answerCount {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: 18px;
+}
+
+.answerCount span {
+  color: var(--green);
+  font-size: 17px;
+}
+
+.divider {
+  width: 305.2px;
+}
+
+.answerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 16px 20px 15px;
+  border: 0.54px solid #c6c6c6;
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.answerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.answerAuthor {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11.5px;
+}
+
+.time {
+  color: var(--text-sub);
+  font-size: 10px;
+}
+
+.answerContent {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+/* 16 답변 없음 */
+.noAnswer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 32px;
+  color: var(--text-sub);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.noAnswer p {
+  margin: 0;
+}
+
+.noAnswer .noAnswerTitle {
+  font-size: 14px;
+}
+
+/* 17 답변 작성 */
+.write {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: -8px;
+}
+
+.owner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 34px;
+  margin: 0;
+  padding: 0 11px 0 12px;
+  background: url('../assets/question/owner-bar.svg') center / 100% 100% no-repeat;
+}
+
+.ownerName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+}
+
+.ownerBadge {
+  padding: 3px 11px;
+  background: url('../assets/question/owner-badge.svg') center / 100% 100% no-repeat;
+  color: var(--green);
+  font-size: 10.5px;
+}
+
+.writeLabel {
+  font-size: 18px;
+}
+
+.textarea {
+  height: 129px;
+  padding: 14px 11px;
+  border: 0.54px solid #c6c6c6;
+  border-radius: 8px;
+  background: var(--white);
+  font-size: 11.5px;
+  line-height: 1.6;
+  resize: none;
+}
+
+.textarea::placeholder {
+  color: var(--placeholder);
+}
+
+.length {
+  margin: 0;
+  color: var(--placeholder);
+  font-size: 10.8px;
+  text-align: right;
+}
