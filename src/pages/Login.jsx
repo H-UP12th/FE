@@ -18,7 +18,7 @@ export default function Login() {
     setSubmitting(true)
     try {
       await login(Object.fromEntries(new FormData(event.currentTarget)))
-      navigate('/', { replace: true })
+      navigate('/', { replace: true, state: { openFridge: true } })
     } catch (err) {
       setError(err.message)
       setSubmitting(false)

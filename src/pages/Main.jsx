@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { isLoggedIn } from '../api/auth'
 import { getPopularMenus } from '../api/menus'
 import logo from '../assets/main/logo.svg'
@@ -33,6 +33,51 @@ const SLOTS = {
   2: { x: 332, y: 28, size: 56, hidden: true },
   '-2': { x: -58, y: 28, size: 56, hidden: true },
   '-1': { x: 19, y: 16, size: 72 },
+}
+
+const OPENED_KEY = 'fridgeOpened'
+
+function hasOpened() {
+  try {
+    return sessionStorage.getItem(OPENED_KEY) === '1'
+  } catch {
+    return true
+  }
+}
+
+function markOpened() {
+  try {
+    sessionStorage.setItem(OPENED_KEY, '1')
+  } catch {
+    // 저장소를 못 쓰면 로그인·온보딩 직후에만 열려요
+  }
+}
+
+// 아래 칸 문이 열리면서 불이 켜지는 모션
+// 로그인·온보딩 직후(state.openFridge)와 브라우저 탭에서 처음 들어올 때만 보여줘요
+function FridgeDoor() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [opening, setOpening] = useState(() => Boolean(location.state?.openFridge) || !hasOpened())
+
+  const fromLogin = Boolean(location.state?.openFridge)
+  const { pathname } = location
+
+  useEffect(() => {
+    markOpened()
+    // 새로고침했을 때 다시 열리지 않게 이동 기록에 남은 state를 지워요
+    if (fromLogin) navigate(pathname, { replace: true })
+  }, [fromLogin, pathname, navigate])
+
+  if (!opening) return null
+
+  return (
+    <div className={styles.doorLayer} aria-hidden="true">
+      <div className={styles.dim} />
+      <div className={styles.glow} />
+      <div className={styles.door} onAnimationEnd={() => setOpening(false)} />
+    </div>
+  )
 }
 
 function PopularCarousel() {
@@ -153,6 +198,8 @@ export default function Main() {
           </div>
           <PopularCarousel />
         </section>
+
+        <FridgeDoor />
       </div>
     </div>
   )
