@@ -1,0 +1,202 @@
+/* 14 질문 목록: 화면 높이에 맞추고 목록만 스크롤 */
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  height: 100svh;
+  padding: 50px 0 81px;
+}
+
+.screen > header {
+  align-self: stretch;
+}
+
+.sub {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 11px;
+}
+
+/* 메뉴 정보 */
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 305px;
+  padding: 11px 0 9px;
+}
+
+.divider {
+  width: 305.2px;
+  margin-bottom: 27px;
+}
+
+.menuName {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+/* 질문 수 + 정렬 */
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 305px;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 17px;
+}
+
+.count span {
+  color: var(--green);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 질문 리스트 */
+.list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 13px;
+  width: 305px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.rowTop,
+.rowBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-sub);
+  font-size: 10.8px;
+}
+
+.rowTop > span:last-child {
+  font-size: 10.8px;
+}
+
+.answered {
+  color: var(--green);
+}
+
+.content {
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 14-1 빈 화면 */
+.empty {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 305px;
+  margin: 0;
+  padding-bottom: 40px;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.empty p {
+  margin: 0;
+}
+
+.emptyIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 6px;
+  border-radius: 24px;
+  background: var(--tag-green);
+  color: var(--green);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.empty .emptyTitle {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 질문 입력 */
+.form {
+  display: flex;
+  gap: 8px;
+  width: 342px;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 49px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--white);
+  font-size: 14px;
+}
+
+.input::placeholder {
+  color: var(--placeholder);
+}
+
+.send {
+  display: flex;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: none;
+}
+
+.send:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.notice,
+.sendError {
+  margin: 0;
+  font-size: 10.8px;
+  text-align: center;
+}
+
+.notice {
+  color: var(--text-sub);
+}
+
+.sendError {
+  color: #c83c3c;
+}

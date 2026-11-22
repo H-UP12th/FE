@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 import { isLoggedIn } from '../api/auth'
 import { getMenu, setBookmark } from '../api/menus'
 import BackHeader from '../components/BackHeader'
@@ -183,6 +183,8 @@ export default function MenuDetail() {
               <span className={styles.rating}>★ {Number(menu.rating.average).toFixed(1)}</span>
               <span>평가 {menu.rating.count}</span>
             </div>
+            {/* 11-1 공유식단: 작성자 표시 */}
+            {menu.author && <p className={styles.author}>작성자 {menu.author}</p>}
           </div>
 
           <div className={styles.tabs} role="tablist">
@@ -217,6 +219,12 @@ export default function MenuDetail() {
             >
               <BookmarkIcon filled={bookmarked} />
             </button>
+            {/* 11-1 공유식단: 작성자에게 질문하기 */}
+            {menu.category === 'SHARED' && (
+              <Link to={`/menus/${menuId}/questions`} state={{ menuName: menu.name }} className={styles.ask}>
+                질문하기
+              </Link>
+            )}
             <button type="button" className={styles.rate} onClick={() => setRating(true)}>
               별점 남기기
             </button>
