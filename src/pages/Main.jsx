@@ -59,6 +59,15 @@ function FridgeDoor() {
   const location = useLocation()
   const navigate = useNavigate()
   const [opening, setOpening] = useState(() => Boolean(location.state?.openFridge) || !hasOpened())
+  // 처음 들어오면 냉장고 그림을 받는 동안 문을 닫아두고, 다 받은 뒤에 열어요
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    if (!opening) return
+    const image = new Image()
+    image.onload = image.onerror = () => setReady(true)
+    image.src = fridge
+  }, [opening])
 
   const fromLogin = Boolean(location.state?.openFridge)
   const { pathname } = location
@@ -72,7 +81,7 @@ function FridgeDoor() {
   if (!opening) return null
 
   return (
-    <div className={styles.doorLayer} aria-hidden="true">
+    <div className={`${styles.doorLayer} ${ready ? '' : styles.waiting}`} aria-hidden="true">
       <div className={styles.dim} />
       <div className={styles.glow} />
       <div className={styles.door} onAnimationEnd={() => setOpening(false)} />
