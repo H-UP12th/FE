@@ -3,17 +3,10 @@ import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { isLoggedIn } from '../api/auth'
 import { getMenus } from '../api/menus'
 import BackHeader from '../components/BackHeader'
+import { CATEGORIES } from '../constants/categories'
 import plate from '../assets/main/plate.png'
 import shelf from '../assets/menu/shelf.png'
 import styles from './MenuList.module.css'
-
-const CATEGORIES = [
-  { value: 'SHARED', label: '공유' },
-  { value: 'CALORIE', label: '저칼로리' },
-  { value: 'PROTEIN', label: '단백질' },
-  { value: 'SLOW_CARB', label: '저속노화' },
-  { value: 'LOW_SUGAR', label: '저당' },
-]
 
 // 메뉴 이름표 색은 분홍 → 노랑 → 초록 순서로 돌아가요
 const TAG_COLORS = ['var(--tag-pink)', 'var(--yellow-light)', 'var(--tag-green)']
