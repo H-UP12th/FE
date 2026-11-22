@@ -1,0 +1,170 @@
+/* 화면 아래에 붙는 시트 (앱 폭 402px에 맞춤) */
+.sheet {
+  position: fixed;
+  inset: auto 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 402px;
+  max-height: none;
+  margin: 0 auto;
+  padding: 12px 24px 32px;
+  border: none;
+  border-radius: 20px 20px 0 0;
+  background: var(--white);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.sheet::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.handle {
+  align-self: center;
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--gray);
+}
+
+.title {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* 샐러드 + 내 별점 */
+.preview {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 83px;
+}
+
+.myScore {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.myScore span {
+  margin-left: 2px;
+  color: var(--green);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 슬라이더: 보이는 막대 위에 투명한 range 입력을 덮어서 조작해요 */
+.slider {
+  position: relative;
+  width: 265px;
+  height: 44px;
+  margin-top: 8px;
+}
+
+.track,
+.fill,
+.tick {
+  position: absolute;
+  top: 18px;
+  height: 6px;
+}
+
+.track {
+  left: 0;
+  width: 265px;
+  border-radius: 3px;
+  background: #e6eae2;
+}
+
+.fill {
+  left: 0;
+  border-radius: 3px;
+  background: var(--green);
+}
+
+.tick {
+  width: 1.5px;
+  background: var(--white);
+}
+
+.knob {
+  position: absolute;
+  top: 10px;
+  pointer-events: none;
+}
+
+.value {
+  position: absolute;
+  top: -8px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: normal;
+  transform: translateX(-50%);
+}
+
+.min,
+.max {
+  position: absolute;
+  top: 28px;
+  color: var(--placeholder);
+  font-size: 10px;
+  line-height: normal;
+}
+
+.min {
+  left: 0;
+}
+
+.max {
+  left: 259px;
+}
+
+.range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* 키보드로 슬라이더에 들어오면 손잡이에 테두리 표시 */
+.slider:has(.range:focus-visible) .knob {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.error {
+  margin: 0;
+  color: #c83c3c;
+  font-size: 14px;
+}
+
+.submit {
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 20px;
+  line-height: normal;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+}

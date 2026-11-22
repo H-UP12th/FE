@@ -3,6 +3,7 @@ import { Navigate, useParams } from 'react-router-dom'
 import { isLoggedIn } from '../api/auth'
 import { getMenu, setBookmark } from '../api/menus'
 import BackHeader from '../components/BackHeader'
+import RatingSheet from '../components/RatingSheet'
 import { findCategory } from '../constants/categories'
 import styles from './MenuDetail.module.css'
 
@@ -126,6 +127,7 @@ export default function MenuDetail() {
   const [result, setResult] = useState({ menuId: null, menu: null, error: '' })
   const [tab, setTab] = useState('info')
   const [bookmarked, setBookmarked] = useState(false)
+  const [rating, setRating] = useState(false)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -215,11 +217,23 @@ export default function MenuDetail() {
             >
               <BookmarkIcon filled={bookmarked} />
             </button>
-            {/* 13 별점 바텀시트는 다음 작업에서 연결해요 */}
-            <button type="button" className={styles.rate}>
+            <button type="button" className={styles.rate} onClick={() => setRating(true)}>
               별점 남기기
             </button>
           </div>
+
+          {rating && (
+            <RatingSheet
+              menuId={menuId}
+              initialScore={menu.rating.myScore}
+              onClose={() => setRating(false)}
+              onRated={({ myScore, average, count }) => {
+                // 등록하면 평균·평가 수를 바로 새 값으로 바꿔요
+                setResult((prev) => ({ ...prev, menu: { ...prev.menu, rating: { myScore, average, count } } }))
+                setRating(false)
+              }}
+            />
+          )}
         </>
       )}
     </div>
