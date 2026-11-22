@@ -7,6 +7,8 @@ import Main from './pages/Main'
 import MenuList from './pages/MenuList'
 import MenuDetail from './pages/MenuDetail'
 import QuestionList from './pages/QuestionList'
+import QuestionDetail from './pages/QuestionDetail'
+import AnswerWrite from './pages/AnswerWrite'
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
       <Route path="/menus" element={<MenuList />} />
       <Route path="/menus/:menuId" element={<MenuDetail />} />
       <Route path="/menus/:menuId/questions" element={<QuestionList />} />
+      <Route path="/menus/:menuId/questions/:questionId" element={<QuestionDetail />} />
+      <Route path="/menus/:menuId/questions/:questionId/answer" element={<AnswerWrite />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
