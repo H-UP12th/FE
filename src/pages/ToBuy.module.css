@@ -1,0 +1,222 @@
+/* 18 To Buy */
+.screen {
+  min-height: 100svh;
+  padding: 50px 0 40px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  padding: 6px 24px 0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.back {
+  display: flex;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.date {
+  margin-left: auto;
+  color: var(--placeholder);
+  font-size: 14px;
+}
+
+/* 분홍 메모지 */
+.memo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 24px 16px;
+  border: 1.5px dashed var(--green);
+  border-radius: 6px;
+  background: var(--tag-pink);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+}
+
+.tape {
+  position: absolute;
+  top: -8px;
+  left: 128px;
+  width: 92px;
+  height: 26px;
+  background: var(--yellow);
+  transform: rotate(4deg);
+}
+
+.memoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--green);
+  font-size: 15px;
+}
+
+.memoHeader h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.progress {
+  height: 8px;
+  margin: 8px 0 12px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--white);
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--green);
+  transition: width 0.2s;
+}
+
+/* 재료 항목 */
+.items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 4px;
+  border-bottom: 1px solid #f3b8c6;
+}
+
+.checkLabel {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  cursor: pointer;
+}
+
+/* 진짜 체크박스는 숨기고 디자인 박스를 보여줘요 (키보드·화면낭독기는 그대로 동작) */
+.checkInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.box {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--green);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.checkInput:checked + .box {
+  background: var(--green);
+}
+
+.checkInput:focus-visible + .box {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.name,
+.nameDone {
+  overflow: hidden;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nameDone {
+  color: var(--placeholder);
+  text-decoration: line-through;
+}
+
+.amount {
+  color: var(--placeholder);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.remove {
+  padding: 0 2px;
+  border: none;
+  background: none;
+  color: var(--placeholder);
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* 재료 추가 */
+.addRow {
+  align-self: flex-start;
+  padding: 10px 0 4px;
+  border: none;
+  background: none;
+  color: var(--placeholder);
+  font-size: 15px;
+}
+
+.addForm {
+  display: flex;
+  gap: 8px;
+  padding: 10px 0 4px;
+}
+
+.addForm input {
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid #f3b8c6;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+}
+
+.addName {
+  flex: 1;
+}
+
+.addAmount {
+  width: 72px;
+}
+
+.addSubmit {
+  padding: 0 12px;
+  border: none;
+  border-radius: 6px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 14px;
+}
+
+.addSubmit:disabled {
+  opacity: 0.4;
+}
+
+.error {
+  margin: -20px 0 0;
+  color: #c83c3c;
+  font-size: 14px;
+}
