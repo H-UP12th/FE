@@ -10,6 +10,7 @@
   --placeholder: #bebebe;
   --tag-pink: #fce4ea;
   --tag-green: #e3f0e6;
+  --green-muted: #6ea581;
 
   font-family: 'Pretendard Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   color: var(--text);
