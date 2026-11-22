@@ -1,0 +1,135 @@
+/* 10 식단 목록 */
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  min-height: 100svh;
+  padding: 50px 0 50px;
+}
+
+.screen > header {
+  align-self: stretch;
+}
+
+/* 카테고리 탭 */
+.tabs {
+  display: flex;
+  gap: 4px;
+  width: 342px;
+}
+
+.tab,
+.activeTab {
+  flex: 1;
+  height: 21px;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background: var(--tag-green);
+  color: var(--green-muted);
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.activeTab {
+  background: var(--green);
+  color: var(--white);
+}
+
+.empty {
+  margin: 120px 0 0;
+  color: var(--green-muted);
+  font-size: 14px;
+}
+
+/* 선반: 한 줄에 메뉴 2개 */
+.shelves {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  padding-top: 11px;
+}
+
+.shelf {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 39px;
+  width: 402px;
+  padding-left: 49px;
+}
+
+.shelfImage {
+  position: absolute;
+  left: 0;
+  top: 55px;
+  width: 402px;
+  height: 26px;
+  object-fit: cover;
+}
+
+.menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  width: 125px;
+  text-decoration: none;
+}
+
+/* 접시 위에 음식 사진 */
+.dish {
+  position: relative;
+  z-index: 1;
+  width: 125px;
+  height: 69px;
+}
+
+.plate {
+  position: absolute;
+  left: 0;
+  top: 26px;
+  width: 123px;
+  height: 43px;
+  object-fit: cover;
+}
+
+.food {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  width: 124px;
+  height: 62px;
+  object-fit: contain;
+}
+
+/* 이름표 + 노란 테이프 */
+.label {
+  position: relative;
+  padding-top: 4px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 9px;
+  border: 0.8px solid var(--green);
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.tape {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 16px;
+  height: 7px;
+  background: var(--yellow);
+  transform: translateX(-50%);
+}
