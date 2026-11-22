@@ -52,7 +52,7 @@ export default function Onboarding() {
           <p className={styles.startText}>{'오늘의 건강한 한 끼,\n핼팅에서 찾아볼까요?'}</p>
         </main>
         <div className={styles.footer}>
-          <Button onClick={() => navigate('/', { replace: true })}>시작하기</Button>
+          <Button onClick={() => navigate('/', { replace: true, state: { openFridge: true } })}>시작하기</Button>
         </div>
       </div>
     )

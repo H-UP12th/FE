@@ -25,6 +25,136 @@
   inset: 0;
 }
 
+/* 아래 칸 문 열림 + 불 켜짐 (1.6초): 좌표는 냉장고 그림의 아래 칸 크기 */
+.doorLayer {
+  position: absolute;
+  left: 15.76px;
+  top: 236.15px;
+  z-index: 5;
+  width: 341.48px;
+  height: 423.63px;
+  perspective: 1400px;
+  pointer-events: none;
+}
+
+/* 열리는 동안 문이 냉장고 밖으로 나와도 잘리지 않게 */
+.fridge:has(.doorLayer) {
+  overflow: visible;
+}
+
+.main:has(.doorLayer) {
+  overflow-x: clip;
+}
+
+/* 불 꺼진 냉장고 안 */
+.dim {
+  position: absolute;
+  inset: 0;
+  border-radius: 15.76px;
+  background: rgba(28, 36, 32, 0.6);
+  animation: light-on 1.6s forwards;
+}
+
+/* 위쪽 조명에서 퍼지는 빛 */
+.glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 15.76px;
+  background: radial-gradient(ellipse 178px 110px at 171px 18px, rgba(255, 246, 194, 0.95), transparent);
+  opacity: 0;
+  animation: glow 1.6s forwards;
+}
+
+/* 오른쪽을 경첩 삼아 열려요, 손잡이는 반대편 왼쪽 (색·테두리·손잡이는 위 칸 문과 같게) */
+.door {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid #2b2d42;
+  border-radius: 15.76px;
+  background: linear-gradient(149deg, #fff, #f3f1ea);
+  transform-origin: right center;
+  animation: door-open 1.6s forwards;
+}
+
+.door::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 40px;
+  width: 8.76px;
+  height: 86.5px;
+  border: 1.5px solid #2b2d42;
+  border-radius: 4.4px;
+  background: #e6e3da;
+}
+
+@keyframes door-open {
+  0%,
+  20% {
+    transform: rotateY(0deg);
+    animation-timing-function: ease-in-out;
+  }
+  80% {
+    transform: rotateY(105deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateY(110deg);
+    opacity: 0;
+  }
+}
+
+/* 문이 3분의 1쯤 열렸을 때 형광등처럼 두 번 깜빡이고 켜져요 */
+@keyframes light-on {
+  0%,
+  38% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.35;
+  }
+  46% {
+    opacity: 0.9;
+  }
+  52% {
+    opacity: 0.2;
+  }
+  56% {
+    opacity: 0.7;
+  }
+  64%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes glow {
+  0%,
+  40% {
+    opacity: 0;
+  }
+  44% {
+    opacity: 0.8;
+  }
+  48% {
+    opacity: 0.2;
+  }
+  54%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 움직임 줄이기 설정이면 처음부터 열린 냉장고를 보여줘요 */
+@media (prefers-reduced-motion: reduce) {
+  .doorLayer {
+    display: none;
+  }
+}
+
 /* 냉장고 문 위 자석 메모들 */
 .mypage {
   position: absolute;
