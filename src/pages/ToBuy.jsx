@@ -1,24 +1,16 @@
 import { useEffect, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { isLoggedIn } from '../api/auth'
 import { addToBuy, checkToBuy, deleteToBuy, getToBuy } from '../api/toBuy'
 import Header from '../components/Header'
-import back from '../assets/tobuy/back.svg'
+import PageTitle from '../components/PageTitle'
+import { formatDay } from '../utils/date'
 import check from '../assets/tobuy/check.svg'
 import styles from './ToBuy.module.css'
-
-const DAYS = ['일', '월', '화', '수', '목', '금', '토']
-
-// "2026-11-18" → "11.18 (수)"
-function formatDate(value) {
-  const [y, m, d] = value.split('-').map(Number)
-  return `${m}.${String(d).padStart(2, '0')} (${DAYS[new Date(y, m - 1, d).getDay()]})`
-}
 
 // 18 To Buy - 오늘 장보기 리스트 (/to-buy)
 // 체크·삭제는 화면을 먼저 바꾸고, 저장이 실패하면 되돌려요
 export default function ToBuy() {
-  const navigate = useNavigate()
   const [date, setDate] = useState('')
   const [items, setItems] = useState([])
   const [loaded, setLoaded] = useState(false)
@@ -91,13 +83,7 @@ export default function ToBuy() {
       <Header />
 
       <div className={styles.body}>
-        <div className={styles.title}>
-          <button type="button" className={styles.back} onClick={() => navigate(-1)} aria-label="뒤로가기">
-            <img src={back} alt="" width="24" height="24" />
-          </button>
-          <h1>To Buy</h1>
-          {date && <span className={styles.date}>{formatDate(date)}</span>}
-        </div>
+        <PageTitle title="To Buy" date={date && formatDay(date)} />
 
         {loaded && (
           <section className={styles.memo}>
