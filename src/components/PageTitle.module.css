@@ -1,0 +1,25 @@
+.title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.back {
+  display: flex;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.date {
+  margin-left: auto;
+  color: var(--placeholder);
+  font-size: 14px;
+}

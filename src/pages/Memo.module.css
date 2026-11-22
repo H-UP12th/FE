@@ -1,0 +1,148 @@
+/* 19 자유 메모 */
+.screen {
+  min-height: 100svh;
+  padding: 50px 0 40px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 6px 24px 0;
+}
+
+/* 노란 줄노트 */
+.paper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+  padding: 30px 22.5px 18px;
+  border: 1.5px dashed var(--green);
+  border-radius: 6px;
+  background: var(--yellow-light);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+}
+
+.tape {
+  position: absolute;
+  top: -15px;
+  left: 130px;
+  width: 92px;
+  height: 26px;
+  background: rgba(246, 185, 201, 0.9);
+  transform: rotate(-3deg);
+}
+
+.paperHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 3px;
+}
+
+.paperHeader label {
+  color: var(--green);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.paperHeader span {
+  color: var(--placeholder);
+  font-size: 13px;
+}
+
+/* 32px마다 밑줄이 그어진 입력칸 (글자도 32px 줄간격에 맞춰요) */
+.textarea {
+  flex: 1;
+  margin-top: 20px;
+  padding: 0;
+  border: none;
+  background: repeating-linear-gradient(to bottom, transparent 0 31px, #eedc9e 31px 32px);
+  font-size: 14px;
+  line-height: 32px;
+  resize: none;
+  outline: none;
+}
+
+.textarea::placeholder {
+  color: var(--placeholder);
+}
+
+.paper:focus-within {
+  border-style: solid;
+}
+
+.length {
+  margin-top: 8px;
+  color: var(--placeholder);
+  font-size: 11px;
+  text-align: right;
+}
+
+.error {
+  margin: 0;
+  color: #c83c3c;
+  font-size: 14px;
+}
+
+.save {
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 16px;
+}
+
+.save:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* 지난 메모 카드 (가로로 넘겨봐요) */
+.past h2 {
+  margin: 0 0 14px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cards {
+  display: flex;
+  gap: 12px;
+  margin: 0 -24px;
+  padding: 0 24px;
+  overflow-x: auto;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 4px;
+  width: 104px;
+  height: 88px;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px dashed var(--green);
+  border-radius: 6px;
+  background: var(--yellow-light);
+}
+
+.card time {
+  color: var(--placeholder);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.card p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 17px;
+  white-space: pre-line;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
