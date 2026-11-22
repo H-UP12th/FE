@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Onboarding from './pages/Onboarding'
 import Main from './pages/Main'
 import MenuList from './pages/MenuList'
+import MenuDetail from './pages/MenuDetail'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/onboarding/:step" element={<Onboarding />} />
       <Route path="/menus" element={<MenuList />} />
+      <Route path="/menus/:menuId" element={<MenuDetail />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

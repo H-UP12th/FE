@@ -1,0 +1,14 @@
+/* 재료가 자기 자리에서 커지면서 나타나요 */
+.layer {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer {
+    transition: none;
+  }
+}

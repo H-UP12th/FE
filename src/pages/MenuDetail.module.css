@@ -1,0 +1,289 @@
+/* 11·12 메뉴 상세 */
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-top: 50px;
+  line-height: 1.4;
+}
+
+.error {
+  margin: 120px 0 0;
+  color: var(--green-muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* 대표 이미지 (없으면 초록 배경만) */
+.hero {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  padding: 20px 0;
+  background: var(--tag-green);
+}
+
+.hero img {
+  object-fit: cover;
+}
+
+/* 이름 + 카테고리·별점 */
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 24px 0;
+}
+
+.name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.tag {
+  padding: 2px 9px;
+  border: 0.8px solid var(--green);
+  border-radius: 2px;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
+  color: var(--green);
+  transform: rotate(2deg);
+}
+
+.rating {
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* 정보 · 재료 / 레시피 탭 */
+.tabs {
+  display: flex;
+  padding: 16px 24px 0;
+}
+
+.tab,
+.activeTab {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: none;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.activeTab {
+  border-bottom: 2px solid var(--green);
+  color: var(--green);
+  font-weight: 700;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 24px 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heading {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* 영양 정보 */
+.nutrition {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kcalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kcal {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.kcal strong {
+  color: var(--green);
+  font-size: 26px;
+}
+
+.serving {
+  margin: 0;
+  font-size: 12px;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.barLabel {
+  width: 56px;
+}
+
+.track {
+  flex: 1;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--border);
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.barValue {
+  width: 36px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.description {
+  margin: -4px 0 0;
+  font-size: 14px;
+}
+
+/* 재료 칩 */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--white);
+  font-size: 13px;
+}
+
+/* 대체 재료 */
+.substitute {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  font-size: 14px;
+}
+
+.substitute strong {
+  color: var(--green);
+}
+
+.substituteAmount {
+  flex: 1;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* 만드는 법 */
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.stepNo {
+  color: var(--green);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.stepContent {
+  flex: 1;
+  margin: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  color: rgba(30, 30, 30, 0.85);
+  font-size: 14px;
+}
+
+.step:last-child .stepContent {
+  border-bottom: none;
+}
+
+/* 추가 사항 */
+.tip {
+  margin: -2px 0 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--yellow-light);
+  font-size: 14px;
+}
+
+/* 하단 고정 액션바 */
+.actionBar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 12px 24px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+
+.bookmark {
+  display: flex;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: none;
+}
+
+.rate {
+  flex: 1;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+}
