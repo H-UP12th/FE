@@ -25,7 +25,7 @@
   inset: 0;
 }
 
-/* 아래 칸 문 열림 + 불 켜짐 (1.6초): 좌표는 냉장고 그림의 아래 칸 크기 */
+/* 아래 칸 문 열림 + 불 켜짐 (2.4초): 좌표는 냉장고 그림의 아래 칸 크기 */
 .doorLayer {
   position: absolute;
   left: 15.76px;
@@ -59,7 +59,7 @@
   inset: 0;
   border-radius: 15.76px;
   background: rgba(28, 36, 32, 0.6);
-  animation: light-on 1.6s forwards;
+  animation: light-on 2.4s forwards;
 }
 
 /* 위쪽 조명에서 퍼지는 빛 */
@@ -69,7 +69,7 @@
   border-radius: 15.76px;
   background: radial-gradient(ellipse 178px 110px at 171px 18px, rgba(255, 246, 194, 0.95), transparent);
   opacity: 0;
-  animation: glow 1.6s forwards;
+  animation: glow 2.4s forwards;
 }
 
 /* 오른쪽을 경첩 삼아 열려요, 손잡이는 반대편 왼쪽 (색·테두리·손잡이는 위 칸 문과 같게) */
@@ -80,7 +80,7 @@
   border-radius: 15.76px;
   background: linear-gradient(149deg, #fff, #f3f1ea);
   transform-origin: right center;
-  animation: door-open 1.6s forwards;
+  animation: door-open 2.4s forwards;
 }
 
 .door::before {
