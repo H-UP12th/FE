@@ -2,9 +2,11 @@ const FALLBACK_ERROR = '요청을 처리하지 못했어요. 잠시 후 다시 �
 
 function send(path, options) {
   const token = localStorage.getItem('accessToken')
+  // 파일 업로드(FormData)는 브라우저가 Content-Type을 정해야 해서 비워둬요
+  const json = options.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }
   return fetch(path, {
     ...options,
-    headers: { 'Content-Type': 'application/json', ...options.headers, Authorization: `Bearer ${token}` },
+    headers: { ...json, ...options.headers, Authorization: `Bearer ${token}` },
   })
 }
 

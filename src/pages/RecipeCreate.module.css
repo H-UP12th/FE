@@ -1,0 +1,340 @@
+/* 10-2·10-3 공유식단 등록 */
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-top: var(--safe-top);
+  line-height: 1.4;
+}
+
+/* 단계 표시: 레시피 입력 1/2 */
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 24px 0;
+}
+
+.progress p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.stepCount {
+  color: var(--text-sub);
+  font-weight: 400;
+}
+
+.bar {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--tag-green);
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--green);
+  transition: width 0.3s;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 24px 24px 32px;
+}
+
+/* 대표 사진 */
+.photo,
+.photoSelected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1.2px dashed var(--green);
+  border-radius: 16px;
+  background: var(--tag-green);
+  cursor: pointer;
+}
+
+.photo {
+  padding: 44px 0;
+}
+
+.photoSelected {
+  padding: 16px 0;
+  border-style: solid;
+}
+
+.photo:focus-within,
+.photoSelected:focus-within {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.fileInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.photoTitle {
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.photoSub {
+  color: var(--text-sub);
+  font-size: 12px;
+}
+
+.previewImage {
+  width: 168px;
+  height: 168px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.photoChange {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 입력 칸 공통 */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heading {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sub {
+  margin-left: 6px;
+  color: var(--text-sub);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.input,
+.inputError,
+.textarea,
+.textareaError {
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--white);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.inputError,
+.textareaError {
+  border-color: var(--error);
+}
+
+.input::placeholder,
+.inputError::placeholder,
+.textarea::placeholder,
+.textareaError::placeholder,
+.tip::placeholder {
+  color: var(--placeholder);
+}
+
+.errorText {
+  margin: 0;
+  color: var(--error);
+  font-size: 12px;
+}
+
+/* 재료 줄: 재료명 | 분량 | ✕ */
+.ingredient {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ingredient .input:first-child {
+  flex: 1;
+}
+
+.amount {
+  width: 88px;
+}
+
+.remove {
+  display: flex;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.add {
+  padding: 10px 0;
+  border: 1px dashed var(--green);
+  border-radius: 10px;
+  background: none;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 만드는 법 */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.step + .errorText {
+  margin-top: 12px;
+}
+
+.stepNo {
+  width: 26px;
+  color: var(--green);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.textarea,
+.textareaError {
+  flex: 1;
+  min-height: 64px;
+  padding: 14px;
+  resize: vertical;
+}
+
+/* 10-3 추가 사항 */
+.tip {
+  height: 140px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: var(--yellow-light);
+  font-size: 14px;
+  line-height: 1.5;
+  resize: none;
+}
+
+.length {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 12px;
+  text-align: right;
+}
+
+/* 승인 안내 카드 */
+.guide {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--tag-green);
+  line-height: 1.5;
+}
+
+.guide h2 {
+  margin: 0;
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.guide ol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: guide;
+}
+
+.guide li {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  counter-increment: guide;
+}
+
+.guide li::before {
+  content: counter(guide);
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.guide p {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 12px;
+}
+
+/* 하단 고정 버튼 */
+.actionBar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding: 12px 24px calc(24px + var(--safe-bottom));
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+
+.primary {
+  flex: 1;
+  height: 49px;
+  border: none;
+  border-radius: 10px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.primary:disabled {
+  background: var(--gray);
+  cursor: default;
+}
+
+.prev {
+  height: 49px;
+  padding: 0 22px;
+  border: 1px solid var(--green);
+  border-radius: 10px;
+  background: none;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 500;
+}
