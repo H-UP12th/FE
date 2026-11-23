@@ -9,7 +9,7 @@
   max-width: 402px;
   max-height: none;
   margin: 0 auto;
-  padding: 12px 24px 32px;
+  padding: 12px 24px calc(32px + var(--safe-bottom));
   border: none;
   border-radius: 20px 20px 0 0;
   background: var(--white);

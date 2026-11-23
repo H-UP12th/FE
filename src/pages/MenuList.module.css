@@ -5,7 +5,7 @@
   align-items: center;
   gap: 24px;
   min-height: 100svh;
-  padding: 50px 0 50px;
+  padding: var(--safe-top) 0 calc(24px + var(--safe-bottom));
 }
 
 .screen > header {

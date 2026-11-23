@@ -13,6 +13,10 @@
   --green-muted: #6ea581;
   --text-sub: #8e958b;
 
+  /* 피그마의 상단 50px(상태바)·하단 34px(홈 인디케이터) 대신 실제 기기 안전 영역 */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
   font-family: 'Pretendard Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   color: var(--text);
 }
@@ -21,9 +25,17 @@
   box-sizing: border-box;
 }
 
+/* 사파리 상단·하단 바가 이 색을 따라가요 */
 body {
   margin: 0;
-  background: #e9e9e9;
+  background: var(--white);
+}
+
+/* PC처럼 화면이 넓을 때만 양옆을 회색으로 */
+@media (min-width: 403px) {
+  body {
+    background: #e9e9e9;
+  }
 }
 
 /* 모바일 화면 폭(피그마 402px)으로 가운데 고정 */
