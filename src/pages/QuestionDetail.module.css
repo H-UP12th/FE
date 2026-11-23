@@ -60,7 +60,7 @@
 }
 
 .formError {
-  color: #c83c3c;
+  color: var(--error);
 }
 
 /* 답변 목록 */

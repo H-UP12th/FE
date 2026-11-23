@@ -198,5 +198,5 @@
 }
 
 .sendError {
-  color: #c83c3c;
+  color: var(--error);
 }
