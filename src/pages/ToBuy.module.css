@@ -191,6 +191,6 @@
 
 .error {
   margin: -20px 0 0;
-  color: #c83c3c;
+  color: var(--error);
   font-size: 14px;
 }

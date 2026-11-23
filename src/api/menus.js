@@ -14,6 +14,15 @@ export const getMenu = (menuId, options) => request(`/api/menus/${menuId}`, opti
 export const rateMenu = (menuId, score) =>
   request(`/api/menus/${menuId}/ratings`, { method: 'POST', body: JSON.stringify({ score }) })
 
+// 공유식단 등록 신청(관리자 승인 후 공유 탭에 올라가요)
+// data: { name, ingredients: [{ name, amount }], recipeSteps: [{ stepNo, content }], tip }, image: File(선택)
+export function createRecipe(data, image) {
+  const form = new FormData()
+  form.append('data', new Blob([JSON.stringify(data)], { type: 'application/json' }))
+  if (image) form.append('image', image)
+  return request('/api/menus', { method: 'POST', body: form })
+}
+
 // 북마크 저장/해제: { menuId, isBookmarked }
 export const setBookmark = (menuId, bookmarked) =>
   request(`/api/menus/${menuId}/bookmarks`, { method: bookmarked ? 'POST' : 'DELETE' })

@@ -12,6 +12,7 @@
   --tag-green: #e3f0e6;
   --green-muted: #6ea581;
   --text-sub: #8e958b;
+  --error: #c83c3c;
 
   /* 피그마의 상단 50px(상태바)·하단 34px(홈 인디케이터) 대신 실제 기기 안전 영역 */
   --safe-top: env(safe-area-inset-top, 0px);
