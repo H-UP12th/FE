@@ -40,7 +40,9 @@
   pointer-events: none;
 }
 
-.waiting > * {
+/* 그림을 받는 동안은 문 안쪽(앞면·옆면·그림자)까지 모두 멈춰 둬요 */
+.waiting *,
+.waiting *::after {
   animation-play-state: paused;
 }
 
@@ -72,18 +74,52 @@
   animation: glow 2.4s forwards;
 }
 
-/* 오른쪽을 경첩 삼아 열려요, 손잡이는 반대편 왼쪽 (색·테두리·손잡이는 위 칸 문과 같게) */
+/* 오른쪽을 경첩 삼아 열려요, 손잡이는 반대편 왼쪽 (색·테두리·손잡이는 위 칸 문과 같게)
+   앞면과 옆면을 3D로 세워서 두께가 보여요. 3D가 납작해지지 않게 문 자체에는 filter·opacity를 쓰지 않아요 */
 .door {
   position: absolute;
   inset: 0;
-  border: 1.5px solid #2b2d42;
-  border-radius: 15.76px;
-  background: linear-gradient(149deg, #fff, #f3f1ea);
   transform-origin: right center;
+  transform-style: preserve-3d;
   animation: door-open 2.4s forwards;
 }
 
-.door::before {
+.doorFront,
+.doorSlice {
+  position: absolute;
+  inset: 0;
+  border-radius: 15.76px;
+  animation: door-fade 2.4s forwards;
+}
+
+.doorFront {
+  border: 1.5px solid #2b2d42;
+  background: linear-gradient(149deg, #fff, #f3f1ea);
+}
+
+/* 앞면 뒤에 쌓이는 두께 판: 테두리 색이 옆에서 보면 문 옆면이 돼요 */
+.doorSlice {
+  border: 1.5px solid #b9b5a8;
+  background: #dcd8cd;
+}
+
+/* 맨 뒤 판은 바깥선을 진하게 해서 두께가 끝나는 곳을 보여줘요 */
+.doorSlice:last-child {
+  border-color: #2b2d42;
+}
+
+/* 돌아갈수록 빛을 덜 받아 어두워져요 */
+.doorFront::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #000;
+  opacity: 0;
+  animation: door-shade 2.4s forwards;
+}
+
+.doorFront::before {
   content: '';
   position: absolute;
   left: 11px;
@@ -95,22 +131,40 @@
   background: #e6e3da;
 }
 
-/* 돌아갈수록 빛을 덜 받아 어두워지고, 다 열린 뒤에 사라져요 */
+/* 문이 돌아가요 (어두워지기·사라지기는 앞면·옆면에서 같은 박자로) */
 @keyframes door-open {
   0%,
   20% {
     transform: rotateY(0deg);
-    filter: brightness(1);
     animation-timing-function: cubic-bezier(0.45, 0, 0.3, 1);
   }
   85% {
     transform: rotateY(100deg);
-    filter: brightness(0.72);
-    opacity: 1;
   }
   100% {
     transform: rotateY(104deg);
-    filter: brightness(0.72);
+  }
+}
+
+@keyframes door-shade {
+  0%,
+  20% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.3, 1);
+  }
+  85%,
+  100% {
+    opacity: 0.28;
+  }
+}
+
+/* 다 열린 뒤에 사라져요 */
+@keyframes door-fade {
+  0%,
+  85% {
+    opacity: 1;
+  }
+  100% {
     opacity: 0;
   }
 }
