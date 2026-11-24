@@ -1,11 +1,19 @@
 .button {
   width: 100%;
   height: 49px;
-  border: none;
+  border: 1px solid var(--green);
   border-radius: 8px;
+  font-size: 18px;
+}
+
+.fill {
   background: var(--green);
   color: #fff;
-  font-size: 18px;
+}
+
+.outline {
+  background: none;
+  color: var(--green);
 }
 
 .button:disabled {
