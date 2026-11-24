@@ -1,0 +1,198 @@
+/* 20 마이페이지 */
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100svh;
+  padding: var(--safe-top) 0 calc(41px + var(--safe-bottom));
+  line-height: 1.4;
+}
+
+.screen > header {
+  align-self: stretch;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  padding: 8px 24px 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.error {
+  margin: -16px 0 0;
+  color: var(--error);
+  font-size: 14px;
+}
+
+/* 프로필 배너 */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--yellow-light);
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarIcon {
+  flex-shrink: 0;
+  color: #bebebe;
+}
+
+.names {
+  flex: 1;
+  min-width: 0;
+}
+
+.names p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.loginId {
+  margin-top: 2px;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+.edit {
+  padding: 6px 12px;
+  border: 1px solid var(--green);
+  border-radius: 14px;
+  background: var(--white);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heading {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* 나의 기록 버블 */
+.records {
+  display: flex;
+  justify-content: space-between;
+}
+
+.record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.bubble {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 88px;
+  height: 88px;
+  border: 1px solid var(--green);
+  border-radius: 44px;
+}
+
+.bubble strong {
+  color: var(--green);
+  font-size: 18px;
+}
+
+/* 냉장고 바로가기 */
+.shortcut {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.shortcutLabel {
+  padding: 2px 8px;
+  border-radius: 8px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.shortcutText {
+  flex: 1;
+  font-size: 14px;
+}
+
+.arrow {
+  color: var(--text-sub);
+  font-size: 16px;
+}
+
+.logout {
+  margin-top: auto;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+/* 20-1 로그아웃 확인 */
+.dialog {
+  width: 310px;
+  padding: 28px 24px 20px;
+  border: none;
+  border-radius: 16px;
+  background: var(--white);
+  text-align: center;
+}
+
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialogTitle {
+  margin: 0 0 20px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.dialogButtons {
+  display: flex;
+  gap: 8px;
+}

@@ -24,3 +24,20 @@ async function postAuth(path, body) {
 export const signup = (body) => postAuth('signup', body)
 export const login = (body) => postAuth('login', body)
 export const isLoggedIn = () => Boolean(localStorage.getItem('accessToken'))
+
+// 로그아웃: 서버에 알리고, 성공·실패(401 등)와 상관없이 토큰을 지워요
+// 서버가 잠들어 있으면 오래 걸리니 5초만 기다려요 (다음 로그인 때 냉장고 문 모션도 다시 보이게)
+export async function logout() {
+  try {
+    await fetch('/api/auth/logout', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
+      signal: AbortSignal.timeout(5000),
+    })
+  } catch {
+    // 응답이 없어도 로그아웃은 진행해요
+  }
+  localStorage.removeItem('accessToken')
+  localStorage.removeItem('refreshToken')
+  sessionStorage.removeItem('fridgeOpened')
+}

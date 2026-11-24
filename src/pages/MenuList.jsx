@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, Navigate, useLocation, useSearchParams } from 'react-router-dom'
+import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { isLoggedIn } from '../api/auth'
 import { getMenus } from '../api/menus'
 import BackHeader from '../components/BackHeader'
@@ -21,7 +21,6 @@ function toShelves(menus) {
 // 10 식단 목록 (/menus?category=CALORIE)
 export default function MenuList() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const { state } = useLocation()
   const category = CATEGORIES.some((c) => c.value === searchParams.get('category'))
     ? searchParams.get('category')
     : CATEGORIES[0].value
@@ -61,13 +60,6 @@ export default function MenuList() {
           </button>
         ))}
       </nav>
-
-      {/* 공유식단 등록에서 넘어오면 신청 완료 안내 */}
-      {state?.submitted && isShared && (
-        <p className={styles.notice} role="status">
-          공유식단을 신청했어요. 관리자가 확인하면 이 냉장고에 올라가요.
-        </p>
-      )}
 
       {!loading && result.error && <p className={styles.empty}>{result.error}</p>}
 

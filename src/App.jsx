@@ -12,6 +12,9 @@ import QuestionDetail from './pages/QuestionDetail'
 import AnswerWrite from './pages/AnswerWrite'
 import ToBuy from './pages/ToBuy'
 import Memo from './pages/Memo'
+import MyPage from './pages/MyPage'
+import ProfileEdit from './pages/ProfileEdit'
+import MyRecipes from './pages/MyRecipes'
 
 export default function App() {
   return (
@@ -29,6 +32,11 @@ export default function App() {
       <Route path="/menus/:menuId/questions/:questionId/answer" element={<AnswerWrite />} />
       <Route path="/to-buy" element={<ToBuy />} />
       <Route path="/memo" element={<Memo />} />
+      <Route path="/mypage" element={<MyPage />} />
+      <Route path="/mypage/edit" element={<ProfileEdit />} />
+      <Route path="/mypage/bookmarks" element={<MyRecipes key="bookmarks" kind="bookmarks" />} />
+      <Route path="/mypage/menus" element={<MyRecipes key="menus" kind="menus" />} />
+      <Route path="/mypage/recent" element={<MyRecipes key="recent" kind="recent" />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

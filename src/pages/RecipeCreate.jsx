@@ -70,8 +70,8 @@ export default function RecipeCreate() {
         },
         image,
       )
-      // 마이페이지(23 내가 만든 레시피)가 생기기 전까지는 공유 탭으로
-      navigate('/menus?category=SHARED', { replace: true, state: { submitted: true } })
+      // 신청한 레시피는 23 내가 만든 레시피에서 확인해요
+      navigate('/mypage/menus', { replace: true })
     } catch (err) {
       setError(err.message)
       setSubmitting(false)
