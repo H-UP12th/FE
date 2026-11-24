@@ -36,6 +36,7 @@ const SLOTS = {
 }
 
 const OPENED_KEY = 'fridgeOpened'
+const DOOR_THICKNESS = 16 // 문 두께(px)
 
 function hasOpened() {
   try {
@@ -84,7 +85,13 @@ function FridgeDoor() {
     <div className={`${styles.doorLayer} ${ready ? '' : styles.waiting}`} aria-hidden="true">
       <div className={styles.dim} />
       <div className={styles.glow} />
-      <div className={styles.door} onAnimationEnd={() => setOpening(false)} />
+      {/* 앞면 뒤로 같은 모양 판을 1px씩 겹쳐 쌓아서, 둥근 모서리까지 이어진 두께를 만들어요 */}
+      <div className={styles.door} onAnimationEnd={(e) => e.target === e.currentTarget && setOpening(false)}>
+        <div className={styles.doorFront} />
+        {Array.from({ length: DOOR_THICKNESS }, (_, i) => (
+          <div key={i} className={styles.doorSlice} style={{ transform: `translateZ(${-(i + 1)}px)` }} />
+        ))}
+      </div>
     </div>
   )
 }
