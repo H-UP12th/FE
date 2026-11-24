@@ -1,0 +1,102 @@
+/* 21 프로필 수정: 내용이 길어서 화면 전체가 스크롤돼요 */
+.screen {
+  min-height: 100svh;
+  padding: var(--safe-top) 0 calc(41px + var(--safe-bottom));
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px 30px 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* 프로필 사진 */
+.photo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarIcon {
+  color: #bebebe;
+}
+
+.photoButton {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: var(--green);
+  color: var(--white);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.photoButton:focus-within {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.photoButton[aria-disabled='true'] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.fileInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 비밀번호 변경 (준비 중) */
+.password {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 12px;
+  line-height: 1.4;
+}
+
+.password p {
+  margin: 0;
+}
+
+.passwordTitle {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.passwordSub {
+  margin-top: 2px;
+  color: var(--text-sub);
+  font-size: 12px;
+}
+
+.error {
+  margin: 0;
+  color: var(--error);
+  font-size: 14px;
+}
+
+.body > button {
+  margin-top: 8px;
+}
