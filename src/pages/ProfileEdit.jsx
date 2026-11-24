@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { BiSolidUserCircle } from 'react-icons/bi'
-import { isLoggedIn } from '../api/auth'
+import { checkLoginId, isLoggedIn } from '../api/auth'
 import { getMe, updateProfile, updateProfileImage } from '../api/users'
 import BackHeader from '../components/BackHeader'
 import Button from '../components/Button'
@@ -23,6 +23,8 @@ export default function ProfileEdit() {
   const [error, setError] = useState('')
   const [saving, setSaving] = useState(false)
   const [uploading, setUploading] = useState(false)
+  // 마지막으로 중복 확인한 닉네임과 결과 (available: null이면 확인 실패 → 서버 응답에 맡겨요)
+  const [idCheck, setIdCheck] = useState({ loginId: '', available: null })
 
   useEffect(() => {
     const controller = new AbortController()
@@ -38,6 +40,22 @@ export default function ProfileEdit() {
       .catch((err) => !signal.aborted && setError(err.message))
     return () => controller.abort()
   }, [])
+
+  // 닉네임을 바꾸면 입력이 멈추고 0.4초 뒤에 중복 확인해요
+  const targetId = loginId.trim()
+  useEffect(() => {
+    if (!me || !targetId || targetId === me.loginId) return
+    const controller = new AbortController()
+    const timer = setTimeout(() => {
+      checkLoginId(targetId, { signal: controller.signal })
+        .then((available) => setIdCheck({ loginId: targetId, available }))
+        .catch(() => !controller.signal.aborted && setIdCheck({ loginId: targetId, available: null }))
+    }, 400)
+    return () => {
+      clearTimeout(timer)
+      controller.abort()
+    }
+  }, [me, targetId])
 
   if (!isLoggedIn()) return <Navigate to="/start" replace />
 
@@ -55,7 +73,10 @@ export default function ProfileEdit() {
 
   const changed = Object.keys(changes).length > 0
   const empty = !name.trim() || !loginId.trim()
-  const blocked = changingPassword && !passwordReady
+  const loginIdChanged = Boolean(me && targetId && targetId !== me.loginId)
+  const checkingId = loginIdChanged && idCheck.loginId !== targetId
+  const duplicateId = loginIdChanged && idCheck.loginId === targetId && idCheck.available === false
+  const blocked = (changingPassword && !passwordReady) || checkingId || duplicateId
 
   async function handlePhoto(file) {
     if (!file) return
@@ -117,7 +138,14 @@ export default function ProfileEdit() {
             onChange={(e) => setLoginId(e.target.value)}
             maxLength={30}
             autoComplete="username"
+            aria-invalid={duplicateId}
+            aria-describedby={duplicateId ? 'login-id-error' : undefined}
           />
+          {duplicateId && (
+            <p id="login-id-error" className={styles.fieldError} role="alert">
+              이미 사용 중인 닉네임이에요
+            </p>
+          )}
 
           <div className={styles.password}>
             <div>

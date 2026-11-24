@@ -91,6 +91,13 @@
   font-size: 12px;
 }
 
+/* 입력칸 바로 아래 오류 (칸 사이 간격 20px 중 12px을 당겨 붙여요) */
+.fieldError {
+  margin: -12px 0 0;
+  color: var(--error);
+  font-size: 12px;
+}
+
 .error {
   margin: 0;
   color: var(--error);

@@ -23,6 +23,14 @@ async function postAuth(path, body) {
 
 export const signup = (body) => postAuth('signup', body)
 export const login = (body) => postAuth('login', body)
+// 닉네임 중복 확인 (로그인 없이 호출) → 쓸 수 있으면 true
+export async function checkLoginId(loginId, options) {
+  const response = await fetch(`/api/auth/check-id?loginId=${encodeURIComponent(loginId)}`, options)
+  const result = await response.json()
+  if (!result.success) throw new Error(result.message ?? FALLBACK_ERROR)
+  return result.data.available
+}
+
 export const isLoggedIn = () => Boolean(localStorage.getItem('accessToken'))
 
 // 로그아웃: 서버에 알리고, 성공·실패(401 등)와 상관없이 토큰을 지워요
