@@ -13,3 +13,8 @@ export function updateProfileImage(file) {
   form.append('image', file)
   return request('/api/users/me/profile-image', { method: 'PATCH', body: form })
 }
+
+// 마이페이지 레시피 목록: kind는 bookmarks(저장한) / menus(내가 만든) / recent-menus(최근 본)
+// → [{ menuId, category, name, imageUrl, ...시각 }]
+export const getMyMenus = (kind, options) =>
+  request(`/api/users/me/${kind}`, options).then((data) => data.menus)

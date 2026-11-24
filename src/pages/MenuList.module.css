@@ -43,17 +43,6 @@
   font-size: 14px;
 }
 
-.notice {
-  width: 342px;
-  margin: -8px 0 0;
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: var(--tag-green);
-  color: var(--green);
-  font-size: 13px;
-  line-height: 1.4;
-}
-
 /* 10-1 빈 화면: 빈 선반 4칸 + 가운데 안내 */
 .emptyShelves {
   position: relative;
